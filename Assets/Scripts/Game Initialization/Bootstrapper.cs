@@ -1,4 +1,4 @@
-using UnityEngine;
+п»їusing UnityEngine;
 
 public class Bootstrapper : MonoBehaviour
 {
@@ -9,14 +9,14 @@ public class Bootstrapper : MonoBehaviour
 
     private void InitializeManagers()
     {
-        // Создаем и инициализируем экземпляр GameManager
+        // РЎРѕР·РґР°РµРј Рё РёРЅРёС†РёР°Р»РёР·РёСЂСѓРµРј СЌРєР·РµРјРїР»СЏСЂ GameManager
         GameManager.Instance.Init();
-        // Вызываем метод для начала игры, если необходимо
+        // Р’С‹Р·С‹РІР°РµРј РјРµС‚РѕРґ РґР»СЏ РЅР°С‡Р°Р»Р° РёРіСЂС‹, РµСЃР»Рё РЅРµРѕР±С…РѕРґРёРјРѕ
 
-        // Создаем и инициализируем экземпляр InputManager
+        // РЎРѕР·РґР°РµРј Рё РёРЅРёС†РёР°Р»РёР·РёСЂСѓРµРј СЌРєР·РµРјРїР»СЏСЂ InputManager
         InputManager.Instance.Init();
 
-        // Создаем и инициализируем экземпляр TimerManager
+        // РЎРѕР·РґР°РµРј Рё РёРЅРёС†РёР°Р»РёР·РёСЂСѓРµРј СЌРєР·РµРјРїР»СЏСЂ TimerManager
         TimerManager.Instance.Init();
     }
 }

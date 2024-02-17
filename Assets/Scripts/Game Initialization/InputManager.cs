@@ -1,4 +1,4 @@
-using UnityEngine;
+п»їusing UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
@@ -22,7 +22,7 @@ public class InputManager : MonoBehaviour
 
     public void Init()
     {
-        Debug.Log("InputManager инициализирован!");
+        Debug.Log("InputManager РёРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°РЅ!");
     }
 
     private void Awake()
@@ -42,7 +42,7 @@ public class InputManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("Пробел нажат");
+            Debug.Log("РџСЂРѕР±РµР» РЅР°Р¶Р°С‚");
             if (spaceAction != null) spaceAction();
         }
     }

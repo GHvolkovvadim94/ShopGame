@@ -1,4 +1,4 @@
-using System;
+п»їusing System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -17,10 +17,10 @@ public class GameManager : MonoBehaviour
     {
         get
         {
-            // Если экземпляр еще не был создан, создаем его
+            // Р•СЃР»Рё СЌРєР·РµРјРїР»СЏСЂ РµС‰Рµ РЅРµ Р±С‹Р» СЃРѕР·РґР°РЅ, СЃРѕР·РґР°РµРј РµРіРѕ
             if (instance == null)
             {
-                // Создаем новый объект GameManager и добавляем к нему компонент
+                // РЎРѕР·РґР°РµРј РЅРѕРІС‹Р№ РѕР±СЉРµРєС‚ GameManager Рё РґРѕР±Р°РІР»СЏРµРј Рє РЅРµРјСѓ РєРѕРјРїРѕРЅРµРЅС‚
                 GameObject singletonObject = new GameObject(typeof(GameManager).Name);
                 instance = singletonObject.AddComponent<GameManager>();
             }
@@ -28,11 +28,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Метод для инициализации
+    // РњРµС‚РѕРґ РґР»СЏ РёРЅРёС†РёР°Р»РёР·Р°С†РёРё
     public void Init()
     {
 
-        Debug.Log("GameManager инициализирован!");
+        Debug.Log("GameManager РёРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°РЅ!");
     }
 
     private void Start()
@@ -49,18 +49,18 @@ public class GameManager : MonoBehaviour
 
         if (inputManager != null)
         {
-            // Передача метода HandleSpaceKeyPress в InputManager
+            // РџРµСЂРµРґР°С‡Р° РјРµС‚РѕРґР° HandleSpaceKeyPress РІ InputManager
             inputManager.SetSpaceAction(CreateNewCustomer);
-            Debug.Log("SpaceAction назначен");
+            Debug.Log("SpaceAction РЅР°Р·РЅР°С‡РµРЅ");
         }
-        Debug.Log("Игра начата!");
+        Debug.Log("РРіСЂР° РЅР°С‡Р°С‚Р°!");
     }
 
 
 
     private void Awake()
     {
-        // Проверяем дублирование экземпляра и обеспечиваем его единственность
+        // РџСЂРѕРІРµСЂСЏРµРј РґСѓР±Р»РёСЂРѕРІР°РЅРёРµ СЌРєР·РµРјРїР»СЏСЂР° Рё РѕР±РµСЃРїРµС‡РёРІР°РµРј РµРіРѕ РµРґРёРЅСЃС‚РІРµРЅРЅРѕСЃС‚СЊ
         if (instance != null && instance != this)
         {
             Destroy(this.gameObject);
@@ -75,20 +75,20 @@ public class GameManager : MonoBehaviour
 
     public void Update()
     {
-        // Обновление игры
+        // РћР±РЅРѕРІР»РµРЅРёРµ РёРіСЂС‹
 
     }
 
     private void CreateNewCustomer()
     {
-        Customer newCustomer = new Customer(CreateNewOrder(), "Ваня");
+        Customer newCustomer = new Customer(CreateNewOrder(), "Р’Р°РЅСЏ");
         OnNewCustomerCome.Invoke(newCustomer);
-        Debug.Log($"Посетитель {newCustomer.Name} создан. Он хочет купить {newCustomer.Order.DesiredItem.ItemName} и заплатит за него {newCustomer.Order.DesiredItem.Price} монет");
+        Debug.Log($"РџРѕСЃРµС‚РёС‚РµР»СЊ {newCustomer.Name} СЃРѕР·РґР°РЅ. РћРЅ С…РѕС‡РµС‚ РєСѓРїРёС‚СЊ {newCustomer.Order.DesiredItem.ItemName} Рё Р·Р°РїР»Р°С‚РёС‚ Р·Р° РЅРµРіРѕ {newCustomer.Order.DesiredItem.Price} РјРѕРЅРµС‚");
     }
 
     private Order CreateNewOrder()
     {
-        return new Order(new Item("Меч", 30), 360f);
+        return new Order(new Item("РњРµС‡", 30), 360f);
     }
 }
 

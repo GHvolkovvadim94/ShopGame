@@ -1,4 +1,4 @@
-using System;
+п»їusing System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -36,6 +36,6 @@ public class Shop : MonoBehaviour
     public void WelcomeNewCostomer(Customer customer)
     {
         customers.Add(customer);
-        Debug.Log($"Добро пожаловать{customer.Name}");
+        Debug.Log($"Р”РѕР±СЂРѕ РїРѕР¶Р°Р»РѕРІР°С‚СЊ{customer.Name}");
     }
 }

@@ -1,4 +1,4 @@
-using System;
+п»їusing System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,10 +25,10 @@ public class Order
 
     public void FulfillOrder(List<Item> counter)
     {
-        // Убрать товар с прилавка
+        // РЈР±СЂР°С‚СЊ С‚РѕРІР°СЂ СЃ РїСЂРёР»Р°РІРєР°
         counter.Remove(DesiredItem);
 
-        // Уведомить игрока о выполненном заказе
+        // РЈРІРµРґРѕРјРёС‚СЊ РёРіСЂРѕРєР° Рѕ РІС‹РїРѕР»РЅРµРЅРЅРѕРј Р·Р°РєР°Р·Рµ
         Debug.Log("Order fulfilled: " + DesiredItem.ItemName);
     }
 

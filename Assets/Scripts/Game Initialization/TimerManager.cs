@@ -1,4 +1,4 @@
-using System;
+п»їusing System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,10 +21,10 @@ public class TimerManager : MonoBehaviour
 
     public void Init()
     {
-        Debug.Log("TimerManager инициализирован!");
+        Debug.Log("TimerManager РёРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°РЅ!");
     }
 
-    // Добавьте здесь любую другую логику TimerManager
+    // Р”РѕР±Р°РІСЊС‚Рµ Р·РґРµСЃСЊ Р»СЋР±СѓСЋ РґСЂСѓРіСѓСЋ Р»РѕРіРёРєСѓ TimerManager
 
     private void Awake()
     {
