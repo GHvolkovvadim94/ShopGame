@@ -9,17 +9,14 @@ public class Bootstrapper : MonoBehaviour
 
     private void InitializeManagers()
     {
-        // Создаем гейм менеджер
+        // Создаем и инициализируем экземпляр GameManager
+        GameManager.Instance.Init();
+        // Вызываем метод для начала игры, если необходимо
 
-            GameObject gameManager = new GameObject("GameManager");
-            gameManager.AddComponent<GameManager>();
-            DontDestroyOnLoad(gameManager); // Делаем GameManager неразрушаемым при загрузке новых сцен
+        // Создаем и инициализируем экземпляр InputManager
+        InputManager.Instance.Init();
 
-        // Создаем инпут менеджер
-
-            GameObject inputManager = new GameObject("InputManager");
-            inputManager.AddComponent<InputManager>();
-            DontDestroyOnLoad(inputManager); // Делаем InputManager неразрушаемым при загрузке новых сцен
-
+        // Создаем и инициализируем экземпляр TimerManager
+        TimerManager.Instance.Init();
     }
 }

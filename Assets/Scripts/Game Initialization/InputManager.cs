@@ -2,20 +2,56 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-    private void ProcessInput()
-    {
-        // Обработка ввода игрока
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            // Выполнить действие при нажатии клавиши Пробел
-            Debug.Log("Process input called");
+    public delegate void SpaceAction();
+    private SpaceAction spaceAction;
 
+
+    private static InputManager instance;
+    public static InputManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                GameObject singletonObject = new GameObject(typeof(InputManager).Name);
+                instance = singletonObject.AddComponent<InputManager>();
+            }
+            return instance;
         }
-        // Другие проверки на нажатия клавиш, клики мыши и т. д.
     }
+
+    public void Init()
+    {
+        Debug.Log("InputManager инициализирован!");
+    }
+
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+    }
+
     private void Update()
     {
-        ProcessInput();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("Пробел нажат");
+            if (spaceAction != null) spaceAction();
+        }
     }
+
+    public void SetSpaceAction(SpaceAction action)
+    {
+        spaceAction = action;
+    }
+
+
 }
 
