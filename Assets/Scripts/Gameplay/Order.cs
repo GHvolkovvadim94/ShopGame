@@ -6,19 +6,19 @@ using UnityEngine;
 public class Order
 {
     public Item DesiredItem { get; private set; }
-    private float timeToComplete;
+    public float TimeToComplete { get; private set; }
     private Timer timer;
 
 
     public Order(Item item, float timeToComplete)
     {
         this.DesiredItem = item;
-        this.timeToComplete = timeToComplete;
+        this.TimeToComplete = timeToComplete;
     }
     private void Start()
     {
         timer = TimerManager.Instance.GetTimer();
-        timer.StartTimer(timeToComplete);
+        timer.StartTimer(TimeToComplete);
         timer.OnTimerComplete += RemoveOrder;
     }
 

@@ -1,41 +1,62 @@
 ﻿using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
     private List<Order> acceptedOrders;
-    private List<Customer> customers;
+    private List<Order> pendingOrders;
     private List<Item> counter;
+
+
+    private int pendingOrdersCapacity = 5;
+    private int acceptedOrdersCapacity = 5;
 
 
 
     public Shop()
     {
         acceptedOrders = new List<Order>();
-        customers = new List<Customer>();
+        pendingOrders = new List<Order>();
     }
 
     private void Start()
     {
-        GameManager.Instance.OnNewCustomerCome.AddListener(WelcomeNewCostomer);
+        GameManager.Instance.OnNewOrderCreated.AddListener(GetNewPendingOrder);
     }
 
 
-    public void AcceptOrder(Customer customer)
+    public void AcceptOrder(Order order)
     {
-        acceptedOrders.Add(customer.Order);
-        customers.Remove(customer);
+        if (acceptedOrders.Count < acceptedOrdersCapacity)
+        {
+            acceptedOrders.Add(order);
+            pendingOrders.Remove(order);
+        }
+        else
+        {
+            throw new Exception($"Попытка выйти за ограничение acceptedOrdersCapacity ({acceptedOrdersCapacity})");
+        }
     }
 
-    public void RejectOrder(Customer customer)
+    public void RejectOrder(Order order)
     {
-        customers.Remove(customer);
+        pendingOrders.Remove(order);
     }
 
-    public void WelcomeNewCostomer(Customer customer)
+    public void GetNewPendingOrder(Order order)
     {
-        customers.Add(customer);
-        Debug.Log($"Добро пожаловать{customer.Name}");
+        if (pendingOrders.Count < pendingOrdersCapacity)
+        {
+            pendingOrders.Add(order);
+            Debug.Log($"Новый заказ добавлен в список ожидания.\nВремя на выполнение заказа {order.TimeToComplete} секунд.");
+        }
+        else
+        {
+            throw new Exception($"Попытка выйти за ограничение pendingOrdersCapacity ({pendingOrdersCapacity})");
+        }
+
+
     }
 }

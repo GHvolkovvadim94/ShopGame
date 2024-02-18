@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
-    public UnityEvent<Customer> OnNewCustomerCome = new UnityEvent<Customer>();
+    public UnityEvent<Order> OnNewOrderCreated = new UnityEvent<Order>();
     GameObject shopGameObject;
     private Shop shop;
     private InputManager inputManager;
@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
         if (inputManager != null)
         {
             // Передача метода HandleSpaceKeyPress в InputManager
-            inputManager.SetSpaceAction(CreateNewCustomer);
+            inputManager.SetSpaceAction(CreateNewOrder);
             Debug.Log("SpaceAction назначен");
         }
         Debug.Log("Игра начата!");
@@ -79,16 +79,10 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private void CreateNewCustomer()
-    {
-        Customer newCustomer = new Customer(CreateNewOrder(), "Ваня");
-        OnNewCustomerCome.Invoke(newCustomer);
-        Debug.Log($"Посетитель {newCustomer.Name} создан. Он хочет купить {newCustomer.Order.DesiredItem.ItemName} и заплатит за него {newCustomer.Order.DesiredItem.Price} монет");
-    }
 
-    private Order CreateNewOrder()
+    private void CreateNewOrder()
     {
-        return new Order(new Item("Меч", 30), 360f);
+        OnNewOrderCreated.Invoke(new Order(new Item("Меч", 30), 360f));
     }
 }
 

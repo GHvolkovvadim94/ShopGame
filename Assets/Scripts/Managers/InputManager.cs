@@ -42,7 +42,6 @@ public class InputManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("Пробел нажат");
             if (spaceAction != null) spaceAction();
         }
     }
